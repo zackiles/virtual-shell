@@ -1,0 +1,24 @@
+{
+  "$schema": "https://turbo.build/schema.json",
+  "tasks": {
+    "build": {
+      "outputs": ["dist"]
+    },
+    "check-exports": {
+      "dependsOn": ["build", "format:check"]
+    },
+    "lint": {
+      "dependsOn": ["^lint"]
+    },
+    "format:check": {
+      "dependsOn": ["^format:check"]
+    },
+    "test": {
+      "dependsOn": ["^test"]
+    },
+    "publish-package": {
+      "dependsOn": ["build", "format:check", "check-exports", "lint", "test"],
+      "cache": false
+    }
+  }
+}

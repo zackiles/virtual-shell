@@ -1,0 +1,62 @@
+{
+  "name": "@ai-tools/virtual-shell",
+  "version": "0.0.1",
+  "description": "A terminal-like interface for CLI applications.",
+  "private": false,
+  "homepage": "https://github.com/zackiles/virtual-shell",
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "url": "git+https://github.com/zackiles/virtual-shell.git"
+  },
+  "scripts": {
+    "dev": "vitest",
+    "build": "tsup",
+    "ci": "turbo build check-exports lint format:check test",
+    "test": "vitest run",
+    "format": "biome format --write ./src",
+    "format:check": "biome format ./src",
+    "lint": "tsc",
+    "check-exports": "attw --pack .",
+    "local-release": "changeset version && pnpm run release",
+    "release": "turbo run publish-package",
+    "publish-package": "changeset publish"
+  },
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    "./package.json": "./package.json",
+    ".": {
+      "import": "./dist/index.mjs",
+      "default": "./dist/index.js"
+    }
+  },
+  "keywords": [
+    "npm package",
+    "stack",
+    "starter kit"
+  ],
+  "author": "Zachary Iles",
+  "license": "MIT",
+  "devDependencies": {
+    "@arethetypeswrong/cli": "^0.16.4",
+    "@biomejs/biome": "^1.9.4",
+    "@changesets/cli": "^2.27.9",
+    "@types/node": "^22.7.7",
+    "@types/shell-quote": "^1.7.5",
+    "tsup": "^8.3.0",
+    "turbo": "^2.1.2",
+    "typescript": "^5.6.2",
+    "vitest": "^2.1.1"
+  },
+  "dependencies": {
+    "isolated-vm": "^5.0.1",
+    "memfs": "^4.14.0",
+    "pnpm": "^9.12.2",
+    "shell-quote": "^1.8.1",
+    "zod": "^3.23.8"
+  },
+  "packageManager": "pnpm@9.9.0"
+}
